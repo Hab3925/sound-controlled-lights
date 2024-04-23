@@ -9,13 +9,14 @@ ThreadController threadController = ThreadController();
 
 void setup()
 {
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   // Init the ADC
   initAdc();
 
   // Init the LED strip
   initLedStrip();
+  initFft();
 
   // Init threads
   threadController.add(&blinkThread);

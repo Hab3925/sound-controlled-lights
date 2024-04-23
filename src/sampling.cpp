@@ -1,7 +1,7 @@
 #include "sampling.h"
 
 MCP3201 mcp;           //  use HWSPI
-float data[NUM_SAMPLES];    //  buffer for the data
+float data[NUM_SAMPLES] = {0};    //  buffer for the data
 
 int writeIndex = 0;    //  index to write the data
 uint32_t lastSampleTime = 0;  //  time of the last sample

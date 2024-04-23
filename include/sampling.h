@@ -6,7 +6,7 @@
 
 #define ADC_CS 10
 #define NUM_SAMPLES 64
-#define SAMPLE_RATE 2000
+#define SAMPLE_RATE 44100
 
 extern float data[NUM_SAMPLES];  //  buffer for the data
 extern float amplitude;             //  peak amplitude

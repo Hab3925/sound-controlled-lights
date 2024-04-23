@@ -8,6 +8,7 @@
 extern float peakFrequency;
 
 void calculateFft();
+void initFft();
 
 // extern float f_peaks[5];
 

@@ -13,9 +13,9 @@ void initLedStrip() {
 
 void updateLeds() {
     // Update the color of the LED strip based on the recorded peak frequency
-    // int hue = map(peakFrequency, 0, 15000, 0, 360); // Map the peak frequency to a hue value
-    // CRGB color = CHSV(hue, 255, 255); // Create a color based on the hue value
-    CRGB color = CRGB::Red;
+    int hue = map(peakFrequency, 0, 22100, 0, 255); // Map the peak frequency to a hue value
+    CRGB color = CHSV(hue, 255, 255); // Create a color based on the hue value
+    // CRGB color = CRGB::Red;
 
     calculateAmplitude();
     // float scaledAmplitude = log10(amplitude + 1) * (256 / log10(1024 + 1)); // +1 to avoid log(0)
@@ -26,10 +26,10 @@ void updateLeds() {
         leds[i] = color;
     }
 
-    // // Turn off the remaining LEDs
-    // for (int i = num_active_leds; i < NUM_LEDS; i++) {
-    //     leds[i] = CRGB::Black;
-    // }
+    // Turn off the remaining LEDs
+    for (int i = num_active_leds; i < NUM_LEDS; i++) {
+        leds[i] = CRGB::Black;
+    }
 
     FastLED.show();
 }
