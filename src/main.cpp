@@ -1,18 +1,31 @@
-#include <Arduino.h>
+#include "main.h"
 
-// put function declarations here:
-int myFunction(int, int);
+Thread blinkThread = Thread(blink, BLINK_FREQUENCY); // Blink to see if the program is running
+Thread samplingThread = Thread(samplingFunction, SAMPLING_FREQUENCY);
+Thread fftThread = Thread(calculateFft, FFT_FREQUENCY);
+Thread ledColorThread = Thread(updateLeds, LED_FREQUENCY);
 
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+ThreadController threadController = ThreadController();
+
+void setup()
+{
+  Serial.begin(115200);
+
+  // Init the ADC
+  initAdc();
+
+  // Init the LED strip
+  initLedStrip();
+
+  // Init threads
+  threadController.add(&blinkThread);
+  threadController.add(&samplingThread);
+  threadController.add(&fftThread);
+  threadController.add(&ledColorThread);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+void loop()
+{
+  threadController.run();
 }
