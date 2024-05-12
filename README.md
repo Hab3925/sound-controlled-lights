@@ -1,4 +1,4 @@
-### Sound controlled lights
+# Sound controlled lights
 
 This the code for the lab project in the class TFY4190 Instrumentation as part of my bachelors degree in physics. 
 
@@ -13,10 +13,10 @@ The final report for the project is in the root folder, named "Report.pdf"
 ## The code
 
 The code is separated into 4 "threads/tasks":
-* *sampling.cpp*: Samples the filtered microphone signal using the MCP3201 ADC on the Arduino hat/shield and stores it in a buffer
-* *fft.cpp*: Performs an FFT using the `ArduinoFFT` library on the data sampled in the buffer to find the most dominant frequency
-* *ledStrip.cpp*: Changes the number of LEDs that are on using the amplitude of the signal in the buffer and changes the color of the LEDs based on the dominant frequency
-* *blink.cpp*: Blinks the user LED on the hat/shield, indicating that the program is running nominaly, which is used for debugging
+* **sampling.cpp**: Samples the filtered microphone signal using the MCP3201 ADC on the Arduino hat/shield and stores it in a buffer
+* **fft.cpp**: Performs an FFT using the `ArduinoFFT` library on the data sampled in the buffer to find the most dominant frequency
+* **ledStrip.cpp**: Changes the number of LEDs that are on using the amplitude of the signal in the buffer and changes the color of the LEDs based on the dominant frequency
+* **blink.cpp**: Blinks the user LED on the hat/shield, indicating that the program is running nominaly, which is used for debugging
 
 Theese are all run at given frequencies by the `ThreadController` through *main.cpp*. 
 
@@ -28,3 +28,6 @@ The PCB made to sit on top of the arduino contained an inverted bandpass filter 
 
 The schematic and layout of the PCB can be found below and in the `PCB schematics folder`
 
+![PCB schematic](https://github.com/Hab3925/sound-controlled-lights/blob/main/PCB%20schematics/Schematic.png)
+
+![PCB layout](https://github.com/Hab3925/sound-controlled-lights/blob/main/PCB%20schematics/layout.png)
